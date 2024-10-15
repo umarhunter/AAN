@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container mt-5">
+    <h2>{{ section.name }}</h2>
+    <div class="list-group">
+        {% for thread in threads %}
+        <a href="{% url 'thread_posts' thread.id %}" class="list-group-item list-group-item-action">{{ thread.title }}</a>
+        {% endfor %}
+    </div>
+    {% if user.is_authenticated %}
+    <form method="post" action="{% url 'create_thread' section.id %}">
+        {% csrf_token %}
+        <div class="form-group mt-3">
+            <label for="title">Create New Thread</label>
+            <input type="text" name="title" id="title" class="form-control">
+        </div>
+        <button type="submit" class="btn btn-primary mt-2">Create Thread</button>
+    </form>
+    {% endif %}
+</div>
+{% endblock %}

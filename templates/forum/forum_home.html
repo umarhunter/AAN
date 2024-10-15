@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container mt-5">
+    <h2>Forum</h2>
+    <div class="list-group">
+        {% for section in sections %}
+        <a href="{% url 'section_threads' section.id %}" class="list-group-item list-group-item-action">{{ section.name }}</a>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

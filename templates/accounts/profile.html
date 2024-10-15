@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container mt-5">
+    <h2>Profile</h2>
+    <p>Welcome, {{ user.username }}!</p>
+    <p>Bio: {{ user.userprofile.bio }}</p>
+    {% if user.userprofile.profile_image %}
+    <img src="{{ user.userprofile.profile_image.url }}" alt="Profile Image" class="img-thumbnail">
+    {% endif %}
+</div>
+{% endblock %}
